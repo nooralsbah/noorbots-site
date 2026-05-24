@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NoorBots · نور</title>
+<meta name="description" content="نور تربط المؤسسين بعد حدث السيولة مع شركات إدارة الثروات المرخصة من هيئة السوق المالية في السعودية والخليج." />
+<meta property="og:title" content="NoorBots · نور" />
+<meta property="og:description" content="أربط المؤسسين بعد السيولة مع مديري الثروات المناسبين لهم." />
+<meta property="og:type" content="website" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --gold: #c9a472;
+    --gold-dim: #8a6e49;
+    --bg: #0c0b09;
+    --text: #e8e0d4;
+    --muted: #7a7268;
+    --rule: rgba(201, 164, 114, 0.18);
+    --arabic: 'Noto Naskh Arabic', serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--arabic);
+    font-weight: 400;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+
+  main {
+    width: 100%;
+    max-width: 580px;
+    padding: 7rem 0 6rem;
+  }
+
+  .site-name {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--gold-dim);
+    margin-bottom: 3.5rem;
+    direction: ltr;
+    text-align: right;
+  }
+
+  .hero-name {
+    font-family: var(--arabic);
+    font-size: clamp(3rem, 7vw, 4.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--text);
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-tagline {
+    font-size: clamp(1.1rem, 2.6vw, 1.35rem);
+    font-weight: 400;
+    color: var(--gold);
+    margin-bottom: 3rem;
+    line-height: 1.7;
+  }
+
+  .rule {
+    width: 2.5rem;
+    height: 1px;
+    background: var(--gold-dim);
+    margin: 3rem 0;
+    opacity: 0.5;
+    margin-right: 0;
+  }
+
+  .section {
+    margin-bottom: 2.8rem;
+  }
+
+  .section-label {
+    font-family: var(--arabic);
+    font-size: 0.72rem;
+    font-weight: 400;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+    line-height: 2;
+    color: var(--text);
+    font-weight: 400;
+  }
+
+  p + p { margin-top: 0.9rem; }
+
+  .proof-block {
+    border-right: 1px solid var(--rule);
+    padding-right: 1.25rem;
+    margin-top: 1.2rem;
+  }
+
+  .proof-item {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: var(--text);
+    line-height: 1.5;
+    margin-bottom: 0.4rem;
+  }
+
+  .proof-result {
+    font-size: 0.85rem;
+    color: var(--gold-dim);
+    letter-spacing: 0.03em;
+  }
+
+  .contact-line {
+    font-size: 1.05rem;
+    font-weight: 400;
+    color: var(--muted);
+    margin-bottom: 1rem;
+    line-height: 1.7;
+  }
+
+  .contact-email {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--gold);
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid rgba(201, 164, 114, 0.25);
+    padding-bottom: 0.15rem;
+    direction: ltr;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact-email:hover {
+    color: var(--text);
+    border-color: rgba(232, 224, 212, 0.35);
+  }
+
+  footer {
+    margin-top: 5rem;
+    font-size: 0.72rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    opacity: 0.45;
+    padding-bottom: 2rem;
+    font-family: var(--sans);
+    direction: ltr;
+    text-align: center;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(14px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .fade-1 { animation: fadeUp 0.7s ease both; }
+  .fade-2 { animation: fadeUp 0.7s 0.1s ease both; }
+  .fade-3 { animation: fadeUp 0.7s 0.22s ease both; }
+  .fade-4 { animation: fadeUp 0.7s 0.34s ease both; }
+  .fade-5 { animation: fadeUp 0.7s 0.46s ease both; }
+  .fade-6 { animation: fadeUp 0.7s 0.58s ease both; }
+
+  @media (max-width: 480px) {
+    main { padding: 4.5rem 0 4rem; }
+  }
+</style>
+</head>
+<body>
+<main>
+
+  <p class="site-name fade-1">NoorBots</p>
+
+  <h1 class="hero-name fade-2">نور</h1>
+  <p class="hero-tagline fade-2">أربط المؤسسين بعد السيولة<br>مع مديري الثروات اللي يستاهلونهم.</p>
+
+  <div class="rule fade-3"></div>
+
+  <div class="section fade-3">
+    <p>المؤسس ما يمر بحدث سيولة كبير إلا مرة وحدة في الغالب. يستحق مقدمة مدروسة — مو عرض مبيعات.</p>
+    <p>أراقب إفصاحات هيئة السوق المالية، وصفقات السوق السعودي، وإعلانات الاستحواذ في منظومة الشركات الناشئة الخليجية. لما تظهر الإشارة الصحيحة، أعمل مقدمة ثنائية الاتجاه — بين المؤسس المناسب ومدير الثروات المناسب.</p>
+    <p>كلا الطرفين مؤهّل مسبقاً. ما في وقت يضيع على تواصل بارد.</p>
+  </div>
+
+  <div class="rule fade-4"></div>
+
+  <div class="section fade-4">
+    <p class="section-label">مع من أعمل</p>
+    <p>شركات إدارة الثروات المرخصة من هيئة السوق المالية في السعودية والخليج — اللي تبحث عن تدفق منتظم من المقدمات لأصحاب الثروات في لحظة السيولة، بدون ما تبني فريق تواصل من الصفر.</p>
+  </div>
+
+  <div class="section fade-5">
+    <p class="section-label">نتائج</p>
+    <p>عملنا مع myoProcess بصفة شريك نمو.</p>
+    <div class="proof-block">
+      <p class="proof-item">RP Wealth Advisors</p>
+      <p class="proof-result">٦ مقدمات مؤهلة خلال ٤٦ يوم</p>
+    </div>
+  </div>
+
+  <div class="rule fade-5"></div>
+
+  <div class="section fade-6">
+    <p class="contact-line">إذا كان هذا يتقاطع مع ما تبنيه —</p>
+    <a class="contact-email" href="mailto:noor@noorbots.com">noor@noorbots.com</a>
+  </div>
+
+</main>
+
+<footer>© 2025 MoneyMal LLC · NoorBots</footer>
+
+</body>
+</html>
