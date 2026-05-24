@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>NoorBots · نور</title>
+<meta name="description" content="نور تربط المؤسسين بعد أحداث السيولة مع شركات إدارة الثروات المرخّصة في السعودية والخليج." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet" />
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #fbfaf7;
+    --bg-bar: #f3f1ec;
+    --text: #1a1814;
+    --muted: #8a8478;
+    --accent: #9a7c4f;
+    --accent-dim: #c4b49a;
+    --rule: rgba(154, 124, 79, 0.18);
+    --arabic: 'Tajawal', sans-serif;
+    --serif: 'Cormorant Garamond', Georgia, serif;
+    --sans: 'DM Sans', system-ui, sans-serif;
+  }
+
+  html { font-size: 16px; -webkit-font-smoothing: antialiased; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 1.5rem;
+  }
+
+  body.en { direction: ltr; }
+  body.ar { direction: rtl; }
+
+  /* ── Top nav — like Saad ── */
+  .top-nav {
+    width: 100%;
+    max-width: 860px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.3rem 0;
+    border-bottom: 1px solid var(--rule);
+    margin-bottom: 0;
+    direction: ltr;
+  }
+
+  .nav-logo {
+    font-family: var(--sans);
+    font-size: 0.88rem;
+    font-weight: 400;
+    color: var(--text);
+    letter-spacing: 0.01em;
+  }
+
+  .nav-right {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-descriptor {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+  }
+
+  .nav-descriptor .ar-only {
+    font-family: var(--arabic);
+    letter-spacing: 0;
+    text-transform: none;
+  }
+
+  .lang-toggle {
+    display: flex;
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    overflow: hidden;
+  }
+
+  .lang-btn {
+    background: transparent;
+    border: none;
+    padding: 0.28rem 0.65rem;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    font-weight: 400;
+    letter-spacing: 0.06em;
+    color: var(--muted);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .lang-btn.active { background: var(--text); color: var(--bg); }
+
+  /* ── Main ── */
+  main { width: 100%; max-width: 860px; padding: 4rem 0 6rem; }
+
+  /* ── Hero ── */
+  .hero-wrap { max-width: 680px; margin-bottom: 1rem; }
+
+  .hero-kicker {
+    font-family: var(--arabic);
+    font-size: 0.9rem;
+    font-weight: 300;
+    letter-spacing: 0;
+    text-transform: none;
+    color: var(--muted);
+    margin-bottom: 1.2rem;
+    font-style: italic;
+  }
+
+  .hero-name {
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--text);
+    margin-bottom: 1rem;
+    max-width: 760px;
+  }
+
+  body.ar .hero-name { font-family: var(--arabic); font-weight: 500; }
+  body.en .hero-name { font-family: var(--serif); font-weight: 300; }
+
+  .hero-sub {
+    font-size: 0.9rem;
+    font-weight: 300;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+
+  body.ar .hero-sub { font-family: var(--arabic); }
+  body.en .hero-sub { font-family: var(--sans); font-style: italic; }
+
+  /* ── CTA links like Saad ── */
+  .hero-links {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    direction: ltr;
+  }
+
+  .hero-link {
+    font-family: var(--sans);
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.1rem;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .hero-link:hover { color: var(--text); border-color: rgba(26,24,20,0.2); }
+
+  /* ── Rule ── */
+  .rule-line { width: 100%; height: 1px; background: var(--rule); margin: 2.8rem 0; }
+
+  /* ── Two col layout ── */
+  .two-col {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 0 3rem;
+    margin-bottom: 2.2rem;
+  }
+
+  body.ar .two-col { direction: rtl; }
+
+  .col-label {
+    font-family: var(--arabic);
+    font-size: 1rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    text-transform: none;
+    color: var(--accent);
+    padding-top: 0.15rem;
+    line-height: 1.5;
+  }
+
+  .col-content p {
+    font-size: 0.95rem;
+    line-height: 1.9;
+    color: var(--text);
+    opacity: 0.8;
+  }
+
+  body.ar .col-content p { font-family: var(--arabic); font-weight: 400; }
+  body.en .col-content p { font-family: var(--sans); font-weight: 300; }
+
+  /* ── Proof block ── */
+  .proof-block {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--rule);
+  }
+
+  .proof-item {
+    font-family: var(--sans);
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: var(--text);
+    margin-bottom: 0.2rem;
+  }
+
+  .proof-result {
+    font-size: 0.78rem;
+    color: var(--muted);
+    font-family: var(--sans);
+    font-weight: 300;
+  }
+
+  /* ── Signals ── */
+  .signals-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 0.6rem;
+  }
+
+  .signal-item {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    padding: 0.65rem 0;
+    border-bottom: 1px solid var(--rule);
+    font-size: 0.88rem;
+    color: var(--text);
+    opacity: 0.78;
+  }
+
+  body.ar .signal-item { font-family: var(--arabic); }
+  body.en .signal-item { font-family: var(--sans); font-weight: 300; }
+
+  .signal-num {
+    font-family: var(--sans);
+    font-size: 0.7rem;
+    color: var(--accent-dim);
+    min-width: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .signals-source {
+    margin-top: 0.8rem;
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    color: var(--muted);
+    opacity: 0.65;
+    line-height: 1.65;
+  }
+
+  /* ── Research ── */
+  .research-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--rule);
+    gap: 1rem;
+  }
+
+  .research-left { display: flex; align-items: baseline; gap: 0.8rem; }
+
+  .issue-num {
+    font-family: var(--sans);
+    font-size: 0.62rem;
+    color: var(--accent-dim);
+    letter-spacing: 0.1em;
+    flex-shrink: 0;
+  }
+
+  .issue-title {
+    font-size: 0.88rem;
+    color: var(--text);
+    opacity: 0.75;
+  }
+
+  body.ar .issue-title { font-family: var(--arabic); }
+  body.en .issue-title { font-family: var(--sans); font-weight: 300; }
+
+  .issue-status {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    flex-shrink: 0;
+    opacity: 0.5;
+  }
+
+  /* ── Bottom CTA ── */
+  .bottom-cta { margin-top: 3rem; }
+
+  .cta-text {
+    font-size: 0.92rem;
+    color: var(--text);
+    opacity: 0.7;
+    margin-bottom: 0.8rem;
+    line-height: 1.7;
+  }
+
+  body.ar .cta-text { font-family: var(--arabic); }
+  body.en .cta-text { font-family: var(--sans); font-weight: 300; font-style: italic; }
+
+  .contact-email {
+    display: inline-block;
+    font-family: var(--sans);
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--accent);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.1rem;
+    direction: ltr;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .contact-email:hover { color: var(--text); border-color: rgba(26,24,20,0.2); }
+
+  /* ── Footer ── */
+  .site-footer {
+    width: 100%;
+    max-width: 860px;
+    border-top: 1px solid var(--rule);
+    padding: 1.2rem 0 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    direction: ltr;
+  }
+
+  .footer-left {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    color: var(--muted);
+    opacity: 0.5;
+  }
+
+  .footer-right {
+    font-family: var(--sans);
+    font-size: 0.68rem;
+    color: var(--muted);
+    opacity: 0.5;
+    letter-spacing: 0.06em;
+  }
+
+  /* ── Lang show/hide ── */
+  .ar-only { display: none; }
+  .en-only { display: none; }
+  body.ar .ar-only { display: inline; }
+  body.en .en-only { display: inline; }
+  .ar-block { display: none; }
+  .en-block { display: none; }
+  body.ar .ar-block { display: block; }
+  body.en .en-block { display: block; }
+
+  /* ── Anim ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+  .f1 { animation: fadeUp 0.6s ease both; }
+  .f2 { animation: fadeUp 0.6s 0.08s ease both; }
+  .f3 { animation: fadeUp 0.6s 0.16s ease both; }
+  .f4 { animation: fadeUp 0.6s 0.24s ease both; }
+  .f5 { animation: fadeUp 0.6s 0.32s ease both; }
+  .f6 { animation: fadeUp 0.6s 0.40s ease both; }
+  .f7 { animation: fadeUp 0.6s 0.48s ease both; }
+
+  @media (max-width: 600px) {
+    .two-col { grid-template-columns: 1fr; gap: 0.4rem; }
+    .col-label { margin-bottom: 0.3rem; }
+    .hero-name { font-size: clamp(2.1rem, 7vw, 3rem); }
+    main { padding: 2.5rem 0 4rem; }
+  }
+</style>
+</head>
+<body class="ar">
+
+<!-- Nav -->
+<nav class="top-nav f1">
+  <span class="nav-logo">NoorBots</span>
+  <div class="nav-right">
+    <span class="nav-descriptor">
+      NOOR — <span class="ar-only">بحث ومقدمات</span><span class="en-only">RESEARCH & INTRODUCTIONS</span>
+    </span>
+    <div class="lang-toggle">
+      <button class="lang-btn active" onclick="setLang('ar')">AR</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</nav>
+
+<main>
+
+  <!-- Hero -->
+  <div class="hero-wrap f2">
+    <p class="hero-kicker">
+      <span class="ar-only">إفصاحات مرصودة عبر ٤ أسواق خليجية · ٢٠٢٤–٢٠٢٥</span>
+      <span class="en-only">Liquidity signals tracked across 4 GCC markets · 2024–2025</span>
+    </p>
+
+    <h1 class="hero-name ar-block">أربط المؤسسين بعد أحداث السيولة مع شركات إدارة الثروات المؤهَّلة لهم.</h1>
+    <h1 class="hero-name en-block">Noor connects post-exit founders with the wealth managers built for them.</h1>
+
+    <p class="hero-sub ar-block">مقدمات انتقائية في مجالَي إدارة الثروات والصفقات الاستراتيجية.</p>
+    <p class="hero-sub en-block">Selective mandates across wealth management and strategic introductions.</p>
+
+    <div class="hero-links">
+      <a class="hero-link" href="mailto:noor@noorbots.com">
+        <span class="ar-only">احجز استشارة خاصة ←</span>
+        <span class="en-only">Book private consultation →</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="rule-line f3"></div>
+
+  <!-- Current Signals -->
+  <div class="two-col f4">
+    <div class="col-label">
+      <span class="ar-only">الإشارات الحالية</span>
+      <span class="en-only">Current Signals</span>
+      <br><span style="opacity:0.5; font-size:0.6rem;">مايو ٢٠٢٦</span>
+    </div>
+    <div class="col-content">
+      <div class="signal-item">
+        <span class="signal-num">٤</span>
+        <span class="ar-only">مؤسسون انتهت فترات القفل على أسهمهم في السوق السعودي — ربع أول ٢٠٢٦</span>
+        <span class="en-only">Founders with expired lock-up periods on Saudi Exchange — Q1 2026</span>
+      </div>
+      <div class="signal-item">
+        <span class="signal-num">٣</span>
+        <span class="ar-only">صفقات استحواذ معلنة في قطاع التقنية المالية الخليجي</span>
+        <span class="en-only">Announced acquisitions in GCC fintech sector</span>
+      </div>
+      <div class="signal-item">
+        <span class="signal-num">٢</span>
+        <span class="ar-only">إفصاحات هيئة السوق المالية عن بيع حصص مؤسسين في شركات مدرجة</span>
+        <span class="en-only">CMA disclosures — founder stake sales in listed companies</span>
+      </div>
+      <div class="signal-item">
+        <span class="signal-num">٦</span>
+        <span class="ar-only">شركات ناشئة خليجية في مرحلة ما قبل الطرح العام</span>
+        <span class="en-only">GCC startups in pre-IPO stage</span>
+      </div>
+      <p class="signals-source">
+        <span class="ar-only">المصادر: إفصاحات هيئة السوق المالية · سوق.sa · MAGNiTT · LinkedIn<br>محدّث مايو ٢٠٢٦ · noor@noorbots.com إن كانت إحداها تخصّك</span>
+        <span class="en-only">Sources: CMA disclosures · saudiexchange.sa · MAGNiTT · LinkedIn<br>Updated May 2026 · noor@noorbots.com if any of these are yours</span>
+      </p>
+    </div>
+  </div>
+
+  <div class="rule-line f5"></div>
+
+  <!-- مع من أعمل -->
+  <div class="two-col f5">
+    <div class="col-label">
+      <span class="ar-only">مع من أعمل</span>
+      <span class="en-only">Who I work with</span>
+    </div>
+    <div class="col-content">
+      <p class="ar-block">شركات إدارة الثروات المرخصة من هيئة السوق المالية في السعودية والخليج — التي تبحث عن تدفق منتظم من المقدمات لأصحاب الثروات في لحظة السيولة، دون الحاجة إلى بناء فريق تواصل خارجي من الصفر.</p>
+      <p class="en-block">CMA-licensed boutique wealth management firms in Saudi Arabia and the GCC seeking a consistent flow of qualified HNWI introductions at the moment of liquidity — without building an outreach function from scratch.</p>
+    </div>
+  </div>
+
+  <!-- نتائج -->
+  <div class="two-col f6">
+    <div class="col-label">
+      <span class="ar-only">نتائج</span>
+      <span class="en-only">Results</span>
+    </div>
+    <div class="col-content">
+      <p class="ar-block">عملنا مع myoProcess بصفة شريك نمو.</p>
+      <p class="en-block">We've worked with myoProcess as a growth partner.</p>
+      <div class="proof-block">
+        <p class="proof-item">RP Wealth Advisors</p>
+        <p class="proof-result ar-only">٦ مقدمات مؤهلة خلال ٤٦ يوماً</p>
+        <p class="proof-result en-only">6 qualified intros in 46 days</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="rule-line f6"></div>
+
+  <!-- Research -->
+  <div class="two-col f7">
+    <div class="col-label">
+      <span class="ar-only">بحث</span>
+      <span class="en-only">Research</span>
+    </div>
+    <div class="col-content">
+      <div class="research-item">
+        <div class="research-left">
+          <span class="issue-num">ISSUE 01</span>
+          <span class="issue-title">
+            <span class="ar-only">نافذة السيولة — توقيت المقدمة الصحيحة</span>
+            <span class="en-only">The Liquidity Window — Timing the Right Introduction</span>
+          </span>
+        </div>
+        <span class="issue-status ar-only">قريباً</span>
+        <span class="issue-status en-only">soon</span>
+      </div>
+      <div class="research-item">
+        <div class="research-left">
+          <span class="issue-num">ISSUE 02</span>
+          <span class="issue-title">
+            <span class="ar-only">المؤسس بعد الطرح العام — فرصة غير مستغلة</span>
+            <span class="en-only">Post-IPO Founders — An Underserved Opportunity</span>
+          </span>
+        </div>
+        <span class="issue-status ar-only">قريباً</span>
+        <span class="issue-status en-only">soon</span>
+      </div>
+      <div class="research-item">
+        <div class="research-left">
+          <span class="issue-num">ISSUE 03</span>
+          <span class="issue-title">
+            <span class="ar-only">الأسواق الرفيعة والمقدمات عالية الرافعة</span>
+            <span class="en-only">Thin Markets and High-Leverage Introductions</span>
+          </span>
+        </div>
+        <span class="issue-status ar-only">قريباً</span>
+        <span class="issue-status en-only">soon</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom CTA -->
+  <div class="rule-line f7"></div>
+  <div class="bottom-cta f7">
+    <p class="cta-text ar-block">نقبل حالياً شريكَين جديدَين من شركات الثروات هذا الربع.</p>
+    <p class="cta-text en-block">Currently accepting 2 new wealth management partners this quarter.</p>
+    <a class="contact-email" href="mailto:noor@noorbots.com">noor@noorbots.com</a>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <span class="footer-left">NoorBots · Noor · Muscat · Remote</span>
+  <span class="footer-right">© 2026 MoneyMal LLC</span>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.className = lang;
+  document.documentElement.lang = lang;
+  document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
+  });
+}
+</script>
+</body>
+</html>
