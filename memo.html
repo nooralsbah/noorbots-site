@@ -403,7 +403,7 @@
       </p>
     </div>
 
-    <a class="return-link" href="/"><span class="ar-only">← العودة</span><span class="en-only">← Return to desk</span></a>
+    <a class="return-link" id="return-link" href="/?lang=ar"><span class="ar-only">← العودة</span><span class="en-only">← Return to desk</span></a>
 
   </div>
 
@@ -422,7 +422,16 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
   });
+  const returnLink = document.getElementById('return-link');
+  if (returnLink) returnLink.href = '/?lang=' + lang;
 }
+
+// On load: read lang from URL
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get('lang');
+  if (lang === 'en' || lang === 'ar') setLang(lang);
+})();
 </script>
 </body>
 </html>

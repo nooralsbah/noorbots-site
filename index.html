@@ -422,7 +422,7 @@
         <span class="ar-only">احجز استشارة خاصة ←</span>
         <span class="en-only">Book private consultation →</span>
       </a>
-      <a class="hero-link" href="/memo">
+      <a class="hero-link" id="memo-link" href="/memo?lang=ar">
         <span class="ar-only">اقرأ المذكرة ←</span>
         <span class="en-only">Read memorandum →</span>
       </a>
@@ -565,7 +565,16 @@ function setLang(lang) {
   document.querySelectorAll('.lang-btn').forEach(btn => {
     btn.classList.toggle('active', btn.textContent.toLowerCase() === lang);
   });
+  const memoLink = document.getElementById('memo-link');
+  if (memoLink) memoLink.href = '/memo?lang=' + lang;
 }
+
+// On load: read lang from URL
+(function() {
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get('lang');
+  if (lang === 'en' || lang === 'ar') setLang(lang);
+})();
 </script>
 </body>
 </html>
