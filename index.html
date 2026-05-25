@@ -70,18 +70,17 @@
 
   .nav-descriptor {
     font-family: var(--sans);
-    font-size: 0.68rem;
+    font-size: 0.78rem;
     font-weight: 400;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
+    letter-spacing: 0.02em;
+    text-transform: none;
     color: var(--text);
-    opacity: 0.75;
+    opacity: 0.7;
   }
 
   .nav-descriptor .ar-only {
     font-family: var(--arabic);
     letter-spacing: 0;
-    text-transform: none;
   }
 
   .lang-toggle {
@@ -345,18 +344,21 @@
 
   .footer-left {
     font-family: var(--sans);
-    font-size: 0.68rem;
-    color: var(--muted);
-    opacity: 0.5;
+    font-size: 0.78rem;
+    color: var(--text);
+    opacity: 0.7;
   }
 
   .footer-right {
     font-family: var(--sans);
-    font-size: 0.68rem;
-    color: var(--muted);
-    opacity: 0.5;
-    letter-spacing: 0.06em;
+    font-size: 0.78rem;
+    color: var(--text);
+    opacity: 0.7;
+    letter-spacing: 0.02em;
   }
+
+  body.ar .footer-left { font-family: var(--arabic); }
+  body.ar .footer-right { font-family: var(--arabic); letter-spacing: 0; }
 
   /* ── Lang show/hide ── */
   .ar-only { display: none; }
@@ -396,7 +398,7 @@
   <span class="nav-logo">NoorBots</span>
   <div class="nav-right">
     <span class="nav-descriptor">
-      NOOR — <span class="ar-only">نور — بحث ومقدمات</span><span class="en-only">RESEARCH & INTRODUCTIONS</span>
+      <span class="ar-only">نور — بحث ومقدمات</span><span class="en-only">RESEARCH & INTRODUCTIONS</span>
     </span>
     <div class="lang-toggle">
       <button class="lang-btn active" onclick="setLang('ar')">AR</button>
@@ -556,7 +558,7 @@
 </main>
 
 <footer class="site-footer">
-  <span class="footer-left"><span class="ar-only">نوربوتس · نور مقيبل · مسقط · عن بُعد</span><span class="en-only">NoorBots · Noor · Muscat · Remote</span></span>
+  <span class="footer-left"><span class="ar-only">نوربوتس · نور · مسقط · عن بُعد</span><span class="en-only">NoorBots · Noor · Muscat · Remote</span></span>
   <span class="footer-right">© 2026 MoneyMal LLC</span>
 </footer>
 
